@@ -18,7 +18,7 @@ const KontakComponent = () => {
         <Card.Body>
           <Card.Title className="text-center">DATA KONTAK</Card.Title>
           <hr />
-          <h1>hello</h1>
+
           {getKontak ? (
             getKontak.map((dataKontak) => {
               return (
