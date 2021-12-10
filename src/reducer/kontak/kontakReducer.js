@@ -1,4 +1,9 @@
-import { GET_KONTAK, POST_KONTAK } from "../../actions/kontakAction";
+import {
+  GET_KONTAK,
+  POST_KONTAK,
+  DETAIL_KONTAK,
+  EDIT_KONTAK,
+} from "../../actions/kontakAction";
 
 const initailState = {
   getKontak: false,
@@ -8,6 +13,11 @@ const initailState = {
   addKontak: false,
   addKontakLoading: false,
   addError: false,
+  editKontak: false,
+  editKontakLoading: false,
+  editError: false,
+
+  detailKontak: false,
 };
 const kontak = (state = initailState, action) => {
   switch (action.type) {
@@ -24,6 +34,18 @@ const kontak = (state = initailState, action) => {
         addKontak: action.payload.data,
         addKontakLoading: action.loading,
         addError: action.errorMessage,
+      };
+    case EDIT_KONTAK:
+      return {
+        ...state,
+        editKontak: action.payload.data,
+        editKontakLoading: action.loading,
+        editError: action.errorMessage,
+      };
+    case DETAIL_KONTAK:
+      return {
+        ...state,
+        detailKontak: action.payload.data,
       };
     default:
       return state;

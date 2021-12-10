@@ -1,11 +1,15 @@
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import React, { useEffect } from "react";
 import { Button, Card, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
-import { deleteData, getDataKontak } from "../../actions/kontakAction";
+import {
+  deleteData,
+  detailKontak,
+  getDataKontak,
+} from "../../actions/kontakAction";
 
 const KontakComponent = () => {
   const { getKontak, kontakLoading, error } = useSelector(
@@ -35,6 +39,9 @@ const KontakComponent = () => {
       }
     });
   };
+  const handleEdit = (data) => {
+    dispatch(detailKontak(data));
+  };
   return (
     <div>
       <Card className="my-3">
@@ -62,6 +69,9 @@ const KontakComponent = () => {
                         {" "}
                         <Button onClick={() => handleDelete(dataKontak.id)}>
                           <FontAwesomeIcon icon={faTrash} />
+                        </Button>{" "}
+                        <Button onClick={() => handleEdit(dataKontak)}>
+                          <FontAwesomeIcon icon={faEdit} />
                         </Button>
                       </td>
                     </tr>
